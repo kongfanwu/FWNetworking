@@ -78,16 +78,16 @@ FOUNDATION_STATIC_INLINE AFHTTPResponseSerializer *responseSerializerResponseDat
     [networkReachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                NSLog(@"无线网络");
+//                NSLog(@"无线网络");
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                NSLog(@"3G网络");
+//                NSLog(@"3G网络");
                 break;
             case AFNetworkReachabilityStatusNotReachable:
-                NSLog(@"未连接");
+//                NSLog(@"未连接");
                 break;
             case AFNetworkReachabilityStatusUnknown:
-                NSLog(@"未知错误");
+//                NSLog(@"未知错误");
                 break;
         }
     }];
@@ -175,7 +175,7 @@ FOUNDATION_STATIC_INLINE AFHTTPResponseSerializer *responseSerializerResponseDat
     }
     else if ([method isEqualToString:@"post"] || [method isEqualToString:@"POST"]) {
         dataTask = [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
-            NSLog(@"%lld %lld", downloadProgress.totalUnitCount, downloadProgress.completedUnitCount);
+            if (progress) progress(downloadProgress);
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if (completeTransform) completeTransform(task, responseObject, YES);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <AFNetworking.h>
 #import "FWNetworking.h"
 
 @interface ViewController ()
@@ -24,26 +23,26 @@
  
     
     
-    NSMutableDictionary *param = [FWNetworking requestDictionary];
-    param[@"mobile"] = @"15201005728";
-    param[@"pwd"] = @"123456";
-    param[@"verifyCode"] = @"12345";
-    
-    [FWNetworking HTTPRequestHeadersBlcok:^NSDictionary<NSString *,NSString *> * _Nonnull{
-        return @{@"key" : @"kong", @"key2" : @"12"};
-    }];
-    
-    [FWNetworking POST:@"CustomUser/register.json" parameters:param completeBlock:^(NSURLSessionDataTask *task, id  _Nullable responseObject, BOOL success) {
-        if (!success) {
-            NSLog(@"error %@", responseObject);
-            if (((NSError *)responseObject).code == NetworkingErrorCodeReachable) {
-                NSLog(@"无网络");
-            }
-            return;
-        }
-        NSLog(@"%@", task.response.URL);
-        NSLog(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-    }];
+//    NSMutableDictionary *param = [FWNetworking requestDictionary];
+//    param[@"mobile"] = @"15201005728";
+//    param[@"pwd"] = @"123456";
+//    param[@"verifyCode"] = @"12345";
+//    
+//    [FWNetworking HTTPRequestHeadersBlcok:^NSDictionary<NSString *,NSString *> * _Nonnull{
+//        return @{@"key" : @"kong", @"key2" : @"12"};
+//    }];
+//    
+//    [FWNetworking POST:@"CustomUser/register.json" parameters:param completeBlock:^(NSURLSessionDataTask *task, id  _Nullable responseObject, BOOL success) {
+//        if (!success) {
+//            NSLog(@"error %@", responseObject);
+//            if (((NSError *)responseObject).code == NetworkingErrorCodeReachable) {
+//                NSLog(@"无网络");
+//            }
+//            return;
+//        }
+//        NSLog(@"%@", task.response.URL);
+//        NSLog(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+//    }];
   
 
 }
